@@ -22,8 +22,9 @@
 // The ULL suffix matters: this gets multiplied by 1,000,000 to convert to
 // microseconds, which overflows 32-bit arithmetic for anything over ~71
 // minutes (the bug that turned "daily" into "every 9 minutes").
-#define CAPTURE_INTERVAL_SEC 1800ULL
-//86400ULL
+//#define CAPTURE_INTERVAL_SEC 1800ULL //half hourly
+//#define CAPTURE_INTERVAL_SEC 5400ULL //90 minues hourly
+#define CAPTURE_INTERVAL_SEC 86400ULL // daily
 
 // After a deep-sleep wake the sensor's auto-exposure and white balance need a
 // few frames to settle. These frames are captured and thrown away.
@@ -35,11 +36,11 @@
 
 // Fixed white-balance preset (auto-WB is disabled for timelapse stability).
 // 1 = sunny (~5500K), 2 = cloudy (warmer, more red -- nicer for plants).
-#define WB_MODE 2
+#define WB_MODE 1
 
 // Set to 0 for desk debugging: uses delay() instead of deep sleep, so the
 // serial monitor stays connected between shots.
-#define DEEP_SLEEP_MODE 0
+#define DEEP_SLEEP_MODE 1
 
 // Blink the user LED once on wake as a sign of life.
 // NOTE: on the XIAO ESP32S3 the user LED (GPIO21) is the same pin as the
